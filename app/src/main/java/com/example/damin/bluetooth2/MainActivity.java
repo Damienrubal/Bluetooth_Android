@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     BluetoothAdapter mBluetoothAdapter;
     public ArrayList<BluetoothDevice> mBTDevices = new ArrayList<>();
     public DeviceListAdapter mDeviceListAdapter;
-    ListView lvNewDevices;
+    ListView lvNewDevices ;
 
 
     ///Create a BroadcastReceiver for ACTION_STATE_CHANGED.
