@@ -17,16 +17,19 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     String TAG="INFOOO";
     Button buttonOnOff ;
+    BluetoothConnectionService mBluetoothConnection;
     Button discoverableButton;
     Button buttonDiscover;
     BluetoothAdapter mBluetoothAdapter;
     public ArrayList<BluetoothDevice> mBTDevices = new ArrayList<>();
     public DeviceListAdapter mDeviceListAdapter;
     ListView lvNewDevices ;
+    BluetoothDevice mBTDevice;
 
 
     ///Create a BroadcastReceiver for ACTION_STATE_CHANGED.
@@ -128,6 +131,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 //case1: bonded already
                 if (mDevice.getBondState() == BluetoothDevice.BOND_BONDED){
                     Log.d(TAG, "BroadcastReceiver4: BOND_BONDED.");
+                    mBTDevice = mDevice;
                 }
                 //case2: creating a bone
                 if (mDevice.getBondState() == BluetoothDevice.BOND_BONDING) {
@@ -299,6 +303,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         if(Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN_MR2){
             Log.d(TAG, "Trying to pair with " + deviceName);
             mBTDevices.get(i).createBond();
+
+            mBTDevice = mBTDevices.get(i);
+            mBluetoothConnection = new BluetoothConnectionService(MainActivity.this);
         }
 
     }
