@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -8,47 +9,68 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
     tools:context="com.example.damin.bluetooth2.MainActivity">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+
 
     <Button
         android:text="ON/OFF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
-        android:id="@+id/btOnOff"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentRight="true"
+        android:id="@+id/btnONOFF"/>
 
     <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnFindUnpairedDevices"
         android:text="Discover"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btDiscover"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="27dp" />
+        android:onClick="btnDiscover"/>
 
     <Button
-        android:text="Enable discoverable"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
-        android:id="@+id/btDiscoverable"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/btnFindUnpairedDevices"
+        android:id="@+id/btnStartConnection"
+        android:text="Start Connection"/>
 
-</LinearLayout>
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter Text Here"
+        android:layout_below="@+id/lvNewDevices"
+        android:id="@+id/editText"/>
 
-
-    <ListView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="54dp"
-        android:id="@+id/lvNewDevices"/>
+        android:text="SEND"
+        android:id="@+id/btnSend"
+        android:layout_toRightOf="@+id/editText"
+        android:layout_below="@+id/lvNewDevices"/>
+
+    <!-- <Button
+         android:text="Disco"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:id="@+id/btnDiscoverable_on_off"
+         android:onClick="btnEnableDisable_Discoverable"
+         android:layout_alignParentTop="true"
+         android:layout_toRightOf="@+id/btnFindUnpairedDevices"
+         android:layout_toEndOf="@+id/btnFindUnpairedDevices"
+         android:layout_marginLeft="31dp"
+         android:layout_marginStart="31dp" />-->
+
+     <ListView
+         android:layout_marginTop="81dp"
+         android:layout_width="match_parent"
+         android:layout_height="150dp"
+         android:id="@+id/lvNewDevices"
+         android:layout_below="@+id/btnStartConnection"
+         android:layout_marginRight="22dp"
+         android:layout_marginEnd="22dp" />
 
 
-</LinearLayout>
+ </RelativeLayout>
